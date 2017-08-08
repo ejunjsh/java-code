@@ -1,3 +1,15 @@
+package com.sky.code.hash.consistent;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 一致性hash代码
  * 
@@ -45,7 +57,7 @@ public class Shared<T> {
 	public T getNode(String key) {
 		Long hashedKey = hash(key);
 		// TODO judge null
-		Entry en = virtualNodes.ceilingEntry(hashedKey);
+		Map.Entry en = virtualNodes.ceilingEntry(hashedKey);
 		if (en == null) {
 			return (T) virtualNodes.firstEntry().getValue();
 		}
@@ -155,17 +167,13 @@ public class Shared<T> {
 		final CountDownLatch cdl = new CountDownLatch(1000);
 		// 1000个线程
 		for (int j = 0; j < 1000; j++) {
-			es.execute(new Runnable() {
-
-				@Override
-				public void run() {
-					// Random rd = new Random(1100);
-					for (int k = 0; k < 10000; k++) {
-						sh.getNode(String.valueOf(Math.random())).inc();
-					}
-					cdl.countDown();
-				}
-			});
+			es.execute(() -> {
+                // Random rd = new Random(1100);
+                for (int k = 0; k < 10000; k++) {
+                    sh.getNode(String.valueOf(Math.random())).inc();
+                }
+                cdl.countDown();
+            });
 		}
 
 		// 等待所有线程结束
@@ -174,6 +182,8 @@ public class Shared<T> {
 		for (Node node : nodeList) {
 			System.out.println("node" + node.getName() + ":" + node.getCount());
 		}
+
+		es.shutdown();
 
 	}
 }
