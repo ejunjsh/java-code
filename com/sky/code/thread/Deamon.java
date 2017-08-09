@@ -1,7 +1,7 @@
 package com.sky.code.thread;
 
 
-public class Demon {
+public class Deamon {
     public static void main(String[] args) {
         Thread deamon = new Thread(new DaemonRunner(),"DaemonRunner");
         //设置为守护线程
