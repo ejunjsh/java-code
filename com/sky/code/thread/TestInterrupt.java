@@ -14,6 +14,7 @@ public class TestInterrupt {
                     Thread.sleep(5000);
                 }
                 catch (InterruptedException e){
+                    //catch 异常之后，输出是false
                     System.out.println("1.current interrupted flag is " +Thread.currentThread().isInterrupted());
                     Thread.currentThread().interrupt();
                     System.out.println("2.current interrupted flag is " +Thread.currentThread().isInterrupted());
@@ -31,7 +32,7 @@ public class TestInterrupt {
         });
 
         t.start();
-
+        //开始中断
         t.interrupt();
 
         try {
