@@ -13,7 +13,7 @@ public class CustomPartitionProducer {
     public CustomPartitionProducer() {
         Properties props = new Properties();
         // Set the broker list for requesting metadata to find the lead broker
-        props.put("metadata.broker.list",
+        props.put("bootstrap.servers",
                 "kafka1:9092, kafka2:9092, kafka3:9092");
 
 
