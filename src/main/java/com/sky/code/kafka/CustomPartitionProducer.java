@@ -17,8 +17,8 @@ public class CustomPartitionProducer {
         props.put("bootstrap.servers",
                 "kafka1:9092, kafka2:9092, kafka3:9092");
 
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
 
         // 1 means the producer receives an acknowledgment once the lead replica
         // has received the data. This option provides better durability as the
