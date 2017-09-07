@@ -51,11 +51,6 @@ public class CustomPartitionProducer {
             String message = accessTime + ",kafka.apache.org," + clientIP;
             System.out.println(message);
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
             ProducerRecord<String,String> data=new ProducerRecord<String, String>(topic,clientIP, message);
 
