@@ -51,17 +51,18 @@ public class CustomPartitionProducer {
             String message = accessTime + ",kafka.apache.org," + clientIP;
             System.out.println(message);
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
             ProducerRecord<String,String> data=new ProducerRecord<String, String>(topic,clientIP, message);
 
 
             // Publish the message
             producer.send(data);
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         // Close producer connection with broker.
         producer.close();
