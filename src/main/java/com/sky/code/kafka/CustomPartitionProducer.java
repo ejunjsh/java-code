@@ -26,13 +26,13 @@ public class CustomPartitionProducer {
     }
     public static void main(String[] args) {
         int argsCount = args.length;
-        if (argsCount == 0 || argsCount == 1)
+        if (argsCount == 0 )
             throw new IllegalArgumentException(
                     "Please provide topic name and Message count as arguments");
         // Topic name and the message count to be published is passed from the
         // command line
-        String topic = (String) args[0];
-        String count = (String) args[1];
+        String topic = (String) args[0].split(",")[0];
+        String count = (String) args[0].split(",")[1];
         int messageCount = Integer.parseInt(count);
         System.out.println("Topic Name - " + topic);
         System.out.println("Message Count - " + messageCount);
