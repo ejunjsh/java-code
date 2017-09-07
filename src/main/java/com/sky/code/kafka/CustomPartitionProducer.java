@@ -2,6 +2,7 @@ package com.sky.code.kafka;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Date;
@@ -16,6 +17,8 @@ public class CustomPartitionProducer {
         props.put("bootstrap.servers",
                 "kafka1:9092, kafka2:9092, kafka3:9092");
 
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
 
         // 1 means the producer receives an acknowledgment once the lead replica
         // has received the data. This option provides better durability as the
