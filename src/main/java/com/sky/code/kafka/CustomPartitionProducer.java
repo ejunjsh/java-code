@@ -1,13 +1,12 @@
 package com.sky.code.kafka;
 
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.*;
 
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class CustomPartitionProducer {
     private static Producer<String, String> producer;
@@ -56,7 +55,14 @@ public class CustomPartitionProducer {
 
 
             // Publish the message
-            producer.send(data);
+            Future<RecordMetadata> f= producer.send(data);
+            try {
+                System.out.println("publish to partition "+f.get().partition());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
 
             try {
                 Thread.sleep(2000);
