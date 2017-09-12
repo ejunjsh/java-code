@@ -14,7 +14,7 @@ public class CustomPartitionProducer {
         Properties props = new Properties();
         // Set the broker list for requesting metadata to find the lead broker
         props.put("bootstrap.servers",
-                "kafka1:9092, kafka2:9092, kafka3:9092");
+                "kafka1:9092");
 
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
@@ -33,8 +33,8 @@ public class CustomPartitionProducer {
                     "Please provide topic name and Message count as arguments");
         // Topic name and the message count to be published is passed from the
         // command line
-        String topic = (String) args[0].split(",")[0];
-        String count = (String) args[0].split(",")[1];
+        String topic = "kafka-topic";
+        String count = "10000";
         int messageCount = Integer.parseInt(count);
         System.out.println("Topic Name - " + topic);
         System.out.println("Message Count - " + messageCount);
@@ -58,6 +58,7 @@ public class CustomPartitionProducer {
             Future<RecordMetadata> f= producer.send(data);
             try {
                 System.out.println("publish to partition "+f.get().partition());
+                System.out.println("offset  "+f.get().offset());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
