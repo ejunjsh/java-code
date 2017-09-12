@@ -27,12 +27,6 @@ public class CustomPartitionProducer {
         producer = new KafkaProducer<>(props);
     }
     public static void main(String[] args) {
-        int argsCount = args.length;
-        if (argsCount == 0 )
-            throw new IllegalArgumentException(
-                    "Please provide topic name and Message count as arguments");
-        // Topic name and the message count to be published is passed from the
-        // command line
         String topic = "kafka-topic";
         String count = "10000";
         int messageCount = Integer.parseInt(count);
