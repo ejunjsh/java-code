@@ -1,6 +1,10 @@
 package com.sky.code.oom;
 
-/** 
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
+
+/**
  * VM Args: -Xmx20m -XX:MaxDirectMemorySize=10M
 */
 public class DirectMemoryOOM{

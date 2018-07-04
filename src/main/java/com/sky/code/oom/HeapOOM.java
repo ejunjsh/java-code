@@ -1,6 +1,9 @@
 package com.sky.code.oom;
 
-/** 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
  * VM Args: -Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError
 */
 public class HeapOOM{
@@ -10,7 +13,7 @@ public class HeapOOM{
     }
 
     public static void main(String[] args){
-        List<OOMObject> List=new ArrayList<OOMObject>();
+        List<OOMObject> list=new ArrayList<OOMObject>();
 
         while(true){
             list.add(new OOMObject());
