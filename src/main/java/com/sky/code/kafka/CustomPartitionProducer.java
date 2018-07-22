@@ -14,7 +14,7 @@ public class CustomPartitionProducer {
         Properties props = new Properties();
         // Set the broker list for requesting metadata to find the lead broker
         props.put("bootstrap.servers",
-                "kafka1:9092");
+                "kafka:9092");
 
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");

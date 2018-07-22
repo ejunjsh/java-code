@@ -1,0 +1,45 @@
+version: "3"
+services:
+
+  zk:
+    image: sjj050121014/zookeeper:1.0
+    hostname: zk
+
+  kafka:
+    image: sjj050121014/kafka:1.0
+    hostname: kafka
+    environment:
+      - broker=1
+      - zk=zk:2181
+
+  kafka2:
+    image: sjj050121014/kafka:1.0
+    hostname: kafka2
+    environment:
+      - broker=2
+      - zk=zk:2181
+
+  kafka3:
+    image: sjj050121014/kafka:1.0
+    hostname: kafka3
+    environment:
+      - broker=3
+      - zk=zk:2181
+
+  create-a-topic:
+    image: sjj050121014/kafka:1.0
+    command: sh ./create-topic.sh
+    volumes:
+      - .:/root
+
+  
+  target:
+    image: sjj050121014/jdk8-mvn:1.0
+    depends_on:
+      - zk
+      - kafka
+      - kafka2
+      - kafka3
+      - create-a-topic
+    volumes:
+      - .:/root

@@ -7,10 +7,28 @@ sh run.sh mvn install
 ````
 
 ## kafka
+run a kafka code, please install `docker` and `docker-compose`
+
 ````
-kafka-topics.sh --create --zookeeper zk1:2181 --replication-factor 1 --partitions 4 --topic kafka-topic
+sudo docker-compose run target
 ````
+
+then, the docker will give a bash back.run below command to start a producer
+
 ````
-sh run.sh mvn exec:java -Dexec.mainClass="com.sky.code.kafka.CustomPartitionProducer"
-sh run.sh mvn exec:java -Dexec.mainClass="com.sky.code.kafka.CustomPartitionConsumer"
+mvn exec:java -Dexec.mainClass="com.sky.code.kafka.CustomPartitionProducer"
 ````
+
+open another bash,and run
+
+````
+sudo docker-compose run target
+````
+
+in the returned bash, run below command to start a consumer.
+
+````
+mvn exec:java -Dexec.mainClass="com.sky.code.kafka.CustomPartitionConsumer"
+````
+
+you will see the both processes that produce a message and another will consume it.
