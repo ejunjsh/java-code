@@ -36,7 +36,7 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
     //测试
 
     public static void main(String[] args) {
-        LRUCache<String, String> cache = new LRUCache<String, String>(5);
+        LRUCache<String, String> cache = new LRUCache<>(5);
         cache.put("1", "1");
         cache.put("2", "2");
         cache.put("3", "3");
