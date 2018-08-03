@@ -31,10 +31,10 @@ public class Comsumer {
     }
 
 
-    public void getMessage(String disname){
+    public void getMessage(String queuename){
         try {
-            Queue queue = session.createQueue(disname);
-            MessageConsumer consumer = null;
+            Queue queue = session.createQueue(queuename);
+            MessageConsumer consumer;
 
             if(threadLocal.get()!=null){
                 consumer = threadLocal.get();

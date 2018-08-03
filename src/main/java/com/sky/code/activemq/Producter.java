@@ -35,10 +35,10 @@ public class Producter {
         }
     }
 
-    public void sendMessage(String disname){
+    public void sendMessage(String queuename){
         try {
             //创建一个消息队列
-            Queue queue = session.createQueue(disname);
+            Queue queue = session.createQueue(queuename);
             //消息生产者
             MessageProducer messageProducer;
             if(threadLocal.get()!=null){
