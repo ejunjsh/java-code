@@ -10,8 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-demo</module>
         <module>activemq</module>
+        <module>kafka</module>
+        <module>other</module>
+        <module>springboot</module>
     </modules>
 
     <dependencyManagement>

@@ -1,4 +1,4 @@
-package com.sky.code.springbootdemo;
+package com.sky.code.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

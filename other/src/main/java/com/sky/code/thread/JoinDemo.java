@@ -12,6 +12,7 @@ public class JoinDemo {
         System.out.println(Thread.currentThread().getName()+" 线程结束");
     }
 }
+
 class Domino implements Runnable{
     private Thread thread;
     public Domino(Thread thread){
