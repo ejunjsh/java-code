@@ -12,8 +12,9 @@
     <modules>
         <module>activemq</module>
         <module>kafka</module>
-        <module>other</module>
         <module>springboot</module>
+        <module>basic</module>
+        <module>guava</module>
     </modules>
 
     <dependencyManagement>
