@@ -1,7 +1,5 @@
 package com.sky.code.atomic;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class noAtomicTest {
 
     static int integer=0;

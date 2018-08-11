@@ -162,7 +162,7 @@ public class Shared<T> {
 				break;
 		}
 
-		final Shared<Node> sh = new Shared<Node>(ndList);
+		final Shared<Node> sh = new Shared<>(ndList);
 		ExecutorService es = Executors.newCachedThreadPool();
 		final CountDownLatch cdl = new CountDownLatch(1000);
 		// 1000个线程
